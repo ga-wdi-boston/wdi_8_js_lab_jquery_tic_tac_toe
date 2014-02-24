@@ -77,7 +77,7 @@ TicTacToe.move = function(event){
     if ( TicTacToe.win() ) {
       // message to congratulate
       $('#win-msg').show();
-      $('#win-msg').html('Player ' + this.player + ' Wins!');
+      $('#msg').html('Player ' + this.player + ' Wins!');
 
       // div that appears with msg and deactive board clicking
       return true;
@@ -95,7 +95,7 @@ TicTacToe.move = function(event){
 TicTacToe.init = function(){
   // Assign event listener to row
   $('.box_row').on('click', TicTacToe.move.bind(this));
-  $('#win-msg').on('click', TicTacToe.boardReset.bind(this));
+  $('#play-again').on('click', TicTacToe.boardReset.bind(this));
 };
 
 
