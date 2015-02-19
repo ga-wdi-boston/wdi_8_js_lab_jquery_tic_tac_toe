@@ -24,9 +24,48 @@ table {
 	height: 150px;
   border-radius: 75px;
   opacity: .75;
-  box-shadow: 2px 2px 0px #888888
+  box-shadow: 2px 2px 0px #888888;
 }
 
 .box_cell:hover {
   background-color: #aaa;
+  cursor: pointer;
+}
+
+.player-1 {
+  background-color: black;
+}
+
+.player-0 {
+  background-color: tomato;
+}
+
+.player-1:hover, .player-0:hover {
+  cursor: default;
+}
+
+.player-1:hover {
+  background-color: black;
+}
+
+.player-0:hover {
+  background-color: tomato;
+}
+
+#win-msg {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  font-size: 4em;
+  width: 500px;
+  margin-left: -250px;
+  background-color: #FFF;
+  height: 400px;
+  text-align: center;
+  display: none;
+}
+
+button {
+  background-color: #FFF;
+  width: 50%;
 }
