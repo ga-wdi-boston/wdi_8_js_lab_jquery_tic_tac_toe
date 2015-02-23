@@ -1,6 +1,7 @@
 body {
 	width: 100%;
   background-image:url('../img/wavegrid.png');
+  font-size: 1px;
 }
 
 #main_container {
@@ -30,3 +31,4 @@ table {
 .box_cell:hover {
   background-color: #aaa;
 }
+
