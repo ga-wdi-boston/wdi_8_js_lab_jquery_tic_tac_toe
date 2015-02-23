@@ -1,12 +1,15 @@
-var board = [
+$(document).ready(function() {
+  $('.box_cell').on('click', TicTacToe.takeTurn);
+});
+
+
+var TicTacToe = (function(){
+  var turnCounter = 1;
+  var board = [
     [0,0,0],
     [0,0,0],
     [0,0,0]
   ]
-
-$(document).ready(function() {
-
-  var turnCounter = 1;
 
   var takeTurn = function() {
     if (!$(this).hasClass('used')){
@@ -38,9 +41,13 @@ $(document).ready(function() {
     }
   };
 
+  var sum = function(sum, current){
+    return sum + current;
+  };
+
   var checkColumns = function() {
     for (var i = 0; i < 2; i++) {
-      var total = board[0][i] + board[1][i] + board[2][i];                          ;
+      var total = board[0][i] + board[1][i] + board[2][i];
       winnerCheck(total);
     }
   };
@@ -60,16 +67,14 @@ $(document).ready(function() {
       }
   };
 
-  var sum = function(sum, current){
-    return sum + current;
-  };
-
   var checkBoard = function() {
     checkRows();
     checkColumns();
     checkDiagonals();
   };
 
+  return {
+    takeTurn: takeTurn
+  }
 
-  $('.box_cell').on('click', takeTurn);
-});
+})();
