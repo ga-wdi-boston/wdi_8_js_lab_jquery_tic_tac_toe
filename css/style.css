@@ -30,3 +30,8 @@ table {
 .box_cell:hover {
   background-color: #aaa;
 }
+
+.box_cell:click {
+  background-color: #aaa;
+}
+
