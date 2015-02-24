@@ -1,28 +1,31 @@
 $(document).ready(function(){
-
   var $box_cell = $('.box_cell');
-  Game.elementColor($box_cell);
-  // var $box_row = $('.box_row');
-  // Game.checkRowWin($box_row);
+  Game.boxClick($box_cell);
 });
+
+
 
 var Game = (function(){
   var player = 0;
 
-  var elementColor = function(element){
-    element.click(function(){
-      if(player === 0){
-        $(this).css('background-color', 'red');
-        player = 1;
-      }else{
-        $(this).css('background-color', 'black');
-        player = 0;
-      };
+  var boxClick = function(box_cell){
+    box_cell.one('click',function(){
+      _cellColor($(this));
       _checkRowWin($(this).data('row'));
       _checkColWin($(this).data('col'));
       _checkDiagWin($(this));
+      // $(this).bind("click", _cellColor)
+     });
+  };
 
-    });
+  var _cellColor = function(box_cell){
+    if(player === 0){
+      $(box_cell).css('background-color', 'red');
+      player = 1;
+    }else{
+      $(box_cell).css('background-color', 'black');
+      player = 0;
+    };
   };
 
   var _checkDiagWin = function(box_cell){
@@ -38,23 +41,12 @@ var Game = (function(){
   var _checkWinner = function(cellColorArr){
     if((cellColorArr[0] === cellColorArr[1]) && (cellColorArr[1] === cellColorArr[2])){
       alert('Player ' + player + " wins!");
+      // $( ".box_cell" ).unbind( "click", _cellColor );
       return(cellColorArr[0] + " wins!");
     }else{
       return(false);
     }
   };
-  // var checkRowWin = function(row){
-  // row.click(function(){
-  //   var box_cells = $(this).children();
-  //   var winCount = 0;
-  //   var $cellColors = [];
-  //   for(var j = 0; j < box_cells.size(); j++){
-  //      $cellColors[j] = $(box_cells[j]).css('background-color');
-  //    // console.log($(box_cells[j]).data('col'))
-  //   };
-  //   checkWinner($cellColors);
-  //   });
-  // };
 
   var _checkDiagWinLeft = function(){
     var box_cells = $('.box_cell').filter(function() {return $(this).data("row") === $(this).data("col")});
@@ -100,7 +92,22 @@ var Game = (function(){
     _checkWinner($cellColors);
   };
   return{
-    elementColor: elementColor
+    boxClick: boxClick
   };
 
 })();
+
+
+
+  // var checkRowWin = function(row){
+  // row.click(function(){
+  //   var box_cells = $(this).children();
+  //   var winCount = 0;
+  //   var $cellColors = [];
+  //   for(var j = 0; j < box_cells.size(); j++){
+  //      $cellColors[j] = $(box_cells[j]).css('background-color');
+  //    // console.log($(box_cells[j]).data('col'))
+  //   };
+  //   checkWinner($cellColors);
+  //   });
+  // };
