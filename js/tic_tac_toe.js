@@ -29,15 +29,21 @@ var elementColor = function(element, game){
       if (count % 2 === 0) {
         color = 'red';
         $(this).css('background-color', 'red');
-        game[$(this)[count]] = color;
+        game[$(this)[0].id] = 'red';
+        debugger;
+        // game[$(this)[count].id] = 'red';
+
         // debugger;
       } else {
         // debugger;
         color = 'black';
         $(this).css('background-color', 'black');
-        game[$(this)[count]] = color;
+        game[$(this)[0].id] = 'black';
+        debugger;
+
       }
       // debugger;
+
       count++;
       $(this).unbind('click');
         // debugger;
