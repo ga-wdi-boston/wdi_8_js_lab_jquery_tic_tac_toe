@@ -13,21 +13,21 @@ var game = (function(){
 
   var changeTurn = function(){
     if(!$(this).hasClass('used')){
-      turnCounter % 2 === 0 ? redTurn($(this)): blackTurn($(this));
+      turnCounter % 2 === 0 ? playerTwoTurn($(this)): playerOneTurn($(this));
       $(this).addClass('used');
       turnCounter++;
       checkCells();
     }
   };
 
-   var blackTurn = function(cell){
+   var playerOneTurn = function(cell){
     var col = cell.data().col;
     var row = cell.data().row;
     board[row][col] = 1;
     cell.css('background-color', 'black');
   };
 
-   var redTurn = function(cell){
+   var playerTwoTurn = function(cell){
     var col = cell.data().col;
     var row = cell.data().row;
     board[row][col] = -1;
