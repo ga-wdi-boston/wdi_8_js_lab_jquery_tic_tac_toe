@@ -1,10 +1,10 @@
-
-var $lFirst, $lSecond, $lThird, $rFirst, $rSecond, $rThird, $h1, $star, $circle;
-var count, blue_rows, red_rows, blue_cols, red_cols
+var $lFirst, $lSecond, $lThird, $rFirst, $rSecond, $rThird, $h1, $star, $circle, $toggle;
+var count, blue_rows, red_rows, blue_cols, red_cols;
 
 $(document).ready(function(){
   TicTacToe.init();
-  $circle.on('click', TicTacToe.setColor);
+  $circle.on('click', TicTacToe.move);
+  $toggle.on('click', TicTacToe.player)
 });
 
 var TicTacToe = (function(){
@@ -12,13 +12,13 @@ var TicTacToe = (function(){
   var init = function(){
     $circle = $('.box_cell');
     $lFirst = $('#box_0_0');
-    $lSecond = $('#box_1_1');
+    $center = $('#box_1_1');
     $lThird = $('#box_2_2');
     $rFirst = $('#box_2_0');
-    $rSecond = $('#box_1_1');
     $rThird = $('#box_0_2');
     $h1 = $('h1');
     $star = $('*');
+    $toggle = $('#toggle');
     count = 0;
     blue_rows = [];
     red_rows = [];
@@ -42,7 +42,14 @@ var TicTacToe = (function(){
     red_cols.push($(this).data().col);
   };
 
-  var setColor = function(){
+  var move = function(){
+    _setColor.call($(this));
+    if (_ai()){
+      _compMove();
+    }
+  };
+
+  var _setColor = function(){
     count += 1;
     if (count % 2 === 0) {
       _goBlue.call($(this));
@@ -73,8 +80,6 @@ var TicTacToe = (function(){
     }
     if(result.some(_threes)){
       return true;
-    } else {
-      return false;
     }
   };
 
@@ -83,22 +88,44 @@ var TicTacToe = (function(){
   };
 
   var _lDiag = function(search){
-    if ($lFirst.hasClass(search) && $lSecond.hasClass(search) && $lThird.hasClass(search)) {
+    if ($lFirst.hasClass(search) && $center.hasClass(search) && $lThird.hasClass(search)) {
       return true;
-    } else {
-      return false;
     }
   };
 
   var _rDiag = function(search){
-    if ($rFirst.hasClass(search) && $rSecond.hasClass(search) && $rThird.hasClass(search)) {
+    if ($rFirst.hasClass(search) && $center.hasClass(search) && $rThird.hasClass(search)) {
       return true;
-    } else {
-      return false;
     }
   };
+
+  var player = function(){
+    if ($(this).hasClass('player')){
+      $(this).text('Vs. AI');
+      $(this).toggleClass('player');
+    } else {
+      $(this).text('2-Player');
+      $(this).toggleClass('player');
+    }
+  };
+
+  var _ai = function(){
+    if ($toggle.hasClass('player')){
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  var _compMove = function(){
+    var $empties = $('.box_cell').not('.red').not('blue');
+    var $choice = $empties[Math.floor(Math.random()*$empties.length)];
+    _setColor.call($choice);
+  };
+
   return {
-    setColor: setColor,
-    init: init
+    move: move,
+    init: init,
+    player: player
   }
 })();
