@@ -7,7 +7,7 @@ $(document).ready(function() {
   $dataRow = $(this).data().row;
   var $box1, $box2, $box3, $box4, $box5, $box6, $box7, $box8, $box9;
 
-  $boxCell.on('click', function() {
+  $boxCell.one('click', function() {
     turn += 1
     if (turn % 2 === 0) {
       $(this).css('background-color', 'red');
@@ -69,6 +69,3 @@ $(document).ready(function() {
 
 });
 
-var combos = {
-
-}
