@@ -25,7 +25,7 @@ var elementColor = function(element, game){
   var count = 0;
   var color;
   element.click(function(){
-    if (count < 9) {
+    if (count < 8) {
       if (count % 2 === 0) {
         color = 'red';
         $(this).css('background-color', 'red');
@@ -41,11 +41,12 @@ var elementColor = function(element, game){
       count++;
       $(this).unbind('click');
     } else {
-      // debugger;
+      debugger;
+        return game;
+
     }
 
   });
-  return game;
 };
 
   // console.log(blah);
