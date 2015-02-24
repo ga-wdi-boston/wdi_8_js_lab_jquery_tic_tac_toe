@@ -2,8 +2,11 @@
 // Use the jQuery
 
 $(document).ready(function(){
+  var theGame = {};
   var $cell = $('.box_cell');
-  var blah = elementColor($cell);
+  var blah = elementColor($cell, theGame);
+  // console.log(blah);
+
 });
 
 // $(document).ready(function(){
@@ -18,21 +21,35 @@ $(document).ready(function(){
 // });
 
 
-var elementColor = function(element){
+var elementColor = function(element, game){
   var count = 0;
+  var color;
   element.click(function(){
-    if (count % 2 === 0) {
-      $(this).css('background-color', 'red');
+    if (count < 8) {
+      if (count % 2 === 0) {
+        color = 'red';
+        $(this).css('background-color', 'red');
+        game[$(this)[count]] = color;
+        // debugger;
+      } else {
+        // debugger;
+        color = 'black';
+        $(this).css('background-color', 'black');
+        game[$(this)[count]] = color;
+      }
       // debugger;
+      count++;
+      $(this).unbind('click');
+        // debugger;
     } else {
-      $(this).css('background-color', 'black');
-      // debugger;
+      debugger;
     }
-    count++;
-    $(this).unbind('click');
+
   });
+  return game;
 };
 
+  // console.log(blah);
 
 // var wins = function() {
 //   var myReds = $(function () {
@@ -142,7 +159,7 @@ var elementColor = function(element){
 
 // $(function(){ //DOM Ready
 //   var col = $(".box_cell, data-col")[index];
-var $col = $('.box_cell').filter(".box_cell, data-col")[index];
+// var $col = $('.box_cell').filter(".box_cell, data-col")[index];
 // });
 
 
