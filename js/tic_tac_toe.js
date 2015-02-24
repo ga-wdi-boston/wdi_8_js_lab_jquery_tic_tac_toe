@@ -29,35 +29,39 @@ var Circle = (function(){
     _checkDiagonals();
   };
   var _checkRows = function(){
-    if($tiles[0].player === $tiles[1].player && $tiles[0].player === $tiles[2].player){
+    if(_threeIn(0,1,2)){
       _wins($tiles[0]);
-    } else if($tiles[3].player === $tiles[4].player && $tiles[3].player === $tiles[5].player) {
+    } else if(_threeIn(3,4,5)) {
       _wins($tiles[3]);
-    } else if($tiles[6].player === $tiles[7].player && $tiles[6].player === $tiles[8].player) {
+    } else if(_threeIn(6,7,8)) {
       _wins($tiles[6]);
     }
   };
 
   var _checkColumns = function(){
-    if($tiles[0].player === $tiles[3].player && $tiles[0].player === $tiles[6].player){
+    if(_threeIn(0,3,6)){
       _wins($tiles[0]);
-    } else if($tiles[1].player === $tiles[4].player && $tiles[1].player === $tiles[7].player) {
+    } else if(_threeIn(1,4,7)) {
       _wins($tiles[1]);
-    } else if($tiles[2].player === $tiles[5].player && $tiles[2].player === $tiles[8].player) {
+    } else if(_threeIn(2,5,8)) {
       _wins($tiles[2]);
     }
   };
 
   var _checkDiagonals = function(){
-    if($tiles[0].player === $tiles[4].player && $tiles[0].player === $tiles[8].player){
+    if(_threeIn(0,4,8)){
       _wins($tiles[0]);
-    } else if($tiles[6].player === $tiles[4].player && $tiles[6].player === $tiles[2].player) {
+    } else if(_threeIn(6,4,2)) {
       _wins($tiles[6]);
     }
   };
 
   var _wins = function(dot){
     return $winner.html(dot.player + ' WON!');
+  };
+
+  var _threeIn = function (one, two, three){
+    return $tiles[one].player === $tiles[two].player && $tiles[one].player === $tiles[three].player;
   };
   return{
     changeColor: changeColor
