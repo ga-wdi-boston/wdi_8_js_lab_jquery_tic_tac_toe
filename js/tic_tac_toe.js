@@ -118,7 +118,7 @@ var TicTacToe = (function(){
   };
 
   var _compMove = function(){
-    var $empties = $('.box_cell').not('.red').not('blue');
+    var $empties = $('.box_cell').not('.red').not('.blue');
     var $choice = $empties[Math.floor(Math.random()*$empties.length)];
     _setColor.call($choice);
   };
