@@ -44,6 +44,18 @@ $(document).ready(function() {
       alert('Red wins!');
     } else if ($box7.attr('class') === 'box_cell black' && $box8.attr('class') === 'box_cell black' && $box9.attr('class') === 'box_cell black') {
       alert('Black wins!');
+    }  else if ($box1.attr('class') === 'box_cell red' && $box4.attr('class') === 'box_cell red' && $box7.attr('class') === 'box_cell red') {
+      alert('Red wins!');
+    } else if ($box1.attr('class') === 'box_cell black' && $box4.attr('class') === 'box_cell black' && $box7.attr('class') === 'box_cell black') {
+      alert('Black wins!');
+    }  else if ($box2.attr('class') === 'box_cell red' && $box5.attr('class') === 'box_cell red' && $box8.attr('class') === 'box_cell red') {
+      alert('Red wins!');
+    } else if ($box2.attr('class') === 'box_cell black' && $box5.attr('class') === 'box_cell black' && $box8.attr('class') === 'box_cell black') {
+      alert('Black wins!');
+    }  else if ($box3.attr('class') === 'box_cell red' && $box6.attr('class') === 'box_cell red' && $box9.attr('class') === 'box_cell red') {
+      alert('Red wins!');
+    } else if ($box3.attr('class') === 'box_cell black' && $box6.attr('class') === 'box_cell black' && $box9.attr('class') === 'box_cell black') {
+      alert('Black wins!');
     };
 
   };
