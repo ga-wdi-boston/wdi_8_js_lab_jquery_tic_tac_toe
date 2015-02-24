@@ -25,30 +25,23 @@ var elementColor = function(element, game){
   var count = 0;
   var color;
   element.click(function(){
-    if (count < 8) {
+    if (count < 9) {
       if (count % 2 === 0) {
         color = 'red';
         $(this).css('background-color', 'red');
-        game[$(this)[0].id] = 'red';
-        debugger;
-        // game[$(this)[count].id] = 'red';
-
+        game[$(this)[0].id] = color;
         // debugger;
       } else {
-        // debugger;
         color = 'black';
         $(this).css('background-color', 'black');
-        game[$(this)[0].id] = 'black';
-        debugger;
-
+        game[$(this)[0].id] = color;
+        // debugger;
       }
-      // debugger;
 
       count++;
       $(this).unbind('click');
-        // debugger;
     } else {
-      debugger;
+      // debugger;
     }
 
   });
