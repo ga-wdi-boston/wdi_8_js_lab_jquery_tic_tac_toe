@@ -15,14 +15,9 @@ $(document).ready(function(){
     return count;
   };
 
-  var playerOneTurn = function(ele){
-    ele.css('background-color','red').attr('data-player', 'player1');
-    playerCheck("player1");
-  };
-
-  var playerTwoTurn = function(ele){
-    ele.css('background-color','blue').attr('data-player', 'player2');
-    playerCheck("player2");
+  var playerTurn = function(ele, color, player){
+    ele.css('background-color',color).attr('data-player', player);
+    playerCheck(player);
   };
 
   var playerCheck = function(player){
@@ -34,7 +29,7 @@ $(document).ready(function(){
   };
 
   $('td').on('click', function() {
-    (turn % 2 === 0) ? playerOneTurn($(this)) : playerTwoTurn($(this));
+    (turn % 2 === 0) ? playerTurn($(this), "red", "player1") : playerTurn($(this), "blue", "player2");
     turn = turn + 1;
   });
 });
