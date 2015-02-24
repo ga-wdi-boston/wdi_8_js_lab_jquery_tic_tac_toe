@@ -16,6 +16,8 @@ $(document).ready(function() {
       $(this).css('background-color', 'black');
       $(this).addClass('black');
     };
+
+    findWinner();
   });
 
   var findWinner = function() {
@@ -32,8 +34,10 @@ $(document).ready(function() {
 
     if ($box1.attr('class') === 'box_cell red' && $box2.attr('class') === 'box_cell red' && $box3.attr('class') === 'box_cell red') {
       alert('Red wins!');
-    } else if ($box1.attr('class') === 'box_cell red' && $box2.attr('class') === 'box_cell red' && $box3.attr('class') === 'box_cell red') {
+    } else if ($($box1).attr('class') === 'box_cell black' && $($box2).attr('class') === 'box_cell black' && $($box3).attr('class') === 'box_cell black') {
       alert('Black wins!');
+    } else {
+      console.log('else is happening');
     };
 
   };
