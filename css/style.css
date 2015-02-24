@@ -19,6 +19,8 @@ table {
 }
 
 .box_cell {
+  color: blue;
+  background-color: white;
 	border: 1px solid black;
 	width: 150px;
 	height: 150px;
