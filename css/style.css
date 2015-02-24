@@ -30,3 +30,11 @@ table {
 .box_cell:hover {
   background-color: #aaa;
 }
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
